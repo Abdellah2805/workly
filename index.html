@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Workly - Votre espace de Coworking à Casablanca</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+    @import url('https://fonts.googleapis.com/css2?family=Playwrite+PL:wght@100..400&display=swap');
+    </style>
+
+    </head>
+<body>
+
+    <header class="main-header">
+        <div class="container">
+            <a href="#accueil" class="logo">Workly</a>
+            <nav class="main-nav">
+                <ul class="nav-list">
+                    <li><a href="#accueil">Accueil</a></li>
+                    <li><a href="#espaces">Nos Espaces</a></li>
+                    <li><a href="#tarifs">Nos Offres</a></li>
+                    <li><a href="#" class="btn-contact-modal">Contact</a></li> </ul>
+                <button class="burger-menu" aria-label="Ouvrir le menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section id="accueil" class="hero">
+            <div class="container">
+                <hgroup>
+                    <h2>Transformez votre façon de travailler</h2>
+                    <p>Découvrez Workly : l'espace de coworking idéal pour freelances et startups à Casablanca.</p>
+                </hgroup>
+                <a href="#tarifs" class="btn primary-btn">Découvrez nos formules</a>
+            </div>
+        </section>
+
+        <section id="espaces" class="spaces">
+            <div class="container">
+                <h3>Nos Espaces de Travail</h3>
+                <p class="section-description">Choisissez l'environnement qui correspond parfaitement à vos besoins et à votre style de travail.</p>
+                
+                <div class="carousel-container">
+                    <div class="carousel-track">
+                        <div class="carousel-slide">
+                            <img src="../workly_site/images/trucs flexibles.jpg" alt="Workly Open Space">
+                            <div class="slide-content">
+                                <h4>Open Space Flexible</h4>
+                                <p>Un environnement dynamique et collaboratif pour stimuler votre créativité.</p>
+                            </div>
+                        </div>
+                        <div class="carousel-slide">
+                            <img src="../workly_site/images/espace bureu privé.jpg" alt="Workly Bureau Privé">
+                            <div class="slide-content">
+                                <h4>Bureaux Privés</h4>
+                                <p>Concentration et confidentialité dans un espace dédié, parfait pour les équipes.</p>
+                            </div>
+                        </div>
+                        <div class="carousel-slide">
+                            <img src="../workly_site/images/Configuration-de-la-salle-de-conference-scaled.jpg" alt="Workly Salle de Réunion">
+                            <div class="slide-content">
+                                <h4>Salles de Réunion Équipées</h4>
+                                <p>Organisez vos meetings et présentations dans un cadre professionnel et moderne.</p>
+                            </div>
+                        </div>
+                        </div>
+                    <button class="carousel-btn prev-btn" aria-label="Slide précédente">&#10094;</button>
+                    <button class="carousel-btn next-btn" aria-label="Slide suivante">&#10095;</button>
+                    <div class="carousel-dots"></div>
+                </div>
+            </div>
+        </section>
+
+        <section id="tarifs" class="pricing">
+            <div class="container">
+                <h3>Nos Offres Flexibles</h3>
+                <p class="section-description">Trouvez la formule idéale pour votre activité, sans engagement.</p>
+                
+                <div class="pricing-grid">
+                    <div class="pricing-card">
+                        <h4>Pass Journée</h4>
+                        <p class="price">150 DH<span>/jour</span></p>
+                        <ul>
+                            <li>Accès Open Space</li>
+                            <li>Wi-Fi Haut Débit</li>
+                            <li>Café & Thé Illimité</li>
+                            <li>Support Communautaire</li>
+                        </ul>
+                        <button class="btn secondary-btn btn-contact-modal">Je teste</button>
+                    </div>
+
+                    <div class="pricing-card featured-card">
+                        <h4>Membre Mensuel</h4>
+                        <p class="price">1500 DH<span>/mois</span></p>
+                        <ul>
+                            <li>Accès Open Space 24/7</li>
+                            <li>Wi-Fi Haut Débit</li>
+                            <li>Café & Thé Illimité</li>
+                            <li>Accès Prioritaire Événements</li>
+                            <li>2h de Salle de Réunion / mois</li>
+                        </ul>
+                        <button class="btn primary-btn btn-contact-modal">Le plus populaire</button>
+                    </div>
+
+                    <div class="pricing-card">
+                        <h4>Bureau Privé</h4>
+                        <p class="price">Sur Devis</p>
+                        <ul>
+                            <li>Bureau dédié & Sécurisé</li>
+                            <li>Accès 24/7</li>
+                            <li>Wi-Fi Haut Débit</li>
+                            <li>Domiciliation d'entreprise</li>
+                            <li>4h de Salle de Réunion / mois</li>
+                        </ul>
+                        <button class="btn secondary-btn btn-contact-modal">Nous contacter</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div id="contactModal" class="modal">
+            <div class="modal-content">
+                <span class="close-button">&times;</span>
+                <h3>Contactez Workly</h3>
+                <p>Envoyez-nous un message pour en savoir plus ou planifier une visite.</p>
+                <form class="contact-form">
+                    <div class="form-group">
+                        <label for="name">Nom Complet</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                     <div class="form-group">
+                        <label for="interest">Intéressé(e) par ?</label>
+                        <select id="interest" name="interest">
+                            <option value="">-- Sélectionnez --</option>
+                            <option value="open-space">Open Space Flexible</option>
+                            <option value="bureau-prive">Bureau Privé</option>
+                            <option value="salle-reunion">Salle de Réunion</option>
+                            <option value="visite">Demander une Visite</option>
+                            <option value="autre">Autre</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Votre Message</label>
+                        <textarea id="message" name="message" rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="btn primary-btn">Envoyer</button>
+                </form>
+            </div>
+        </div>
+
+    </main>
+
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-info">
+                <h4>Workly Co-working</h4>
+                <p>123 Avenue du Coworking, Casablanca, Maroc</p>
+                <p>Téléphone : +212 5 XX XX XX XX</p>
+                <p>Email : contact@workly.ma</p>
+            </div>
+            <div class="footer-nav">
+                <h4>Liens Rapides</h4>
+                <ul>
+                    <li><a href="#accueil">Accueil</a></li>
+                    <li><a href="#espaces">Nos Espaces</a></li>
+                    <li><a href="#tarifs">Nos Offres</a></li>
+                    <li><a href="#">FAQ</a></li>
+                </ul>
+            </div>
+            <div class="footer-social">
+                <h4>Suivez-nous</h4>
+                <ul>
+                    <li><a href="#" aria-label="Facebook"><img src="../workly_site/images/Facebook_icon_2013.svg.png" alt="Facebook"></a></li>
+                    <li><a href="#" aria-label="Instagram"><img src="../workly_site/images/instagram-6338393_1280..jpg" alt="Instagram"></a></li>
+                    <li><a href="#" aria-label="LinkedIn"><img src="../workly_site/images/LinkedIn_logo_initials.png" alt="LinkedIn"></a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="container">
+                <p>&copy; 2025 Workly. Tous droits réservés.</p>
+                <a href="#">Mentions Légales</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

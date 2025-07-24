@@ -1,0 +1,855 @@
+/* ==================== 1. Variables CSS ==================== */
+:root {
+    --primary-color: #007bff; /* Bleu vibrant Workly */
+    --secondary-color: #6c757d; /* Gris doux pour les textes secondaires */
+    --accent-color: #28a745; /* Vert pour les actions et mises en avant */
+    --bg-light: #f8f9fa; /* Arrière-plan très clair */
+    --text-dark: #343a40; /* Texte foncé principal */
+    --text-light: #ffffff; /* Texte clair */
+    --border-color: #dee2e6; /* Couleur de bordure standard */
+    --box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); /* Ombre douce */
+    --transition-speed: 0.3s ease; /* Vitesse de transition standard */
+    
+
+}
+
+/* ==================== 2. Styles Généraux et Réinitialisation ==================== */
+*, *::before, *::after {
+    box-sizing: border-box; /* Modèle de boîte universel */
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: "Playwrite PL", sans-serif;
+    line-height: 1.6;
+    color: var(--text-dark);
+    background-color: var(--bg-light);
+    scroll-behavior: smooth; /* Défilement doux pour les ancres */
+}
+
+/* Conteneur central pour le contenu */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 25px;
+}
+
+/* Styles des titres */
+h1, h2, h3, h4 {
+    color: var(--text-dark);
+    line-height: 1.2;
+    margin-bottom: 0.5em;
+    text-align: center;
+}
+
+h1 { font-size: 3.5em; }
+h2 { font-size: 3em; }
+h3 { font-size: 2.5em; }
+h4 { font-size: 1.8em; }
+
+/* Styles des paragraphes */
+p {
+    margin-bottom: 1em;
+    text-align: center;
+}
+
+.section-description {
+    font-size: 1.1em;
+    color: var(--secondary-color);
+    max-width: 700px;
+    margin: 0 auto 60px; /* Centrer et espacer sous le titre de section */
+}
+
+/* Styles des liens */
+a {
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: color var(--transition-speed);
+}
+
+a:hover {
+    color: #0056b3; /* Bleu plus foncé au survol */
+}
+
+/* Styles des listes */
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+/* Styles des boutons génériques */
+.btn {
+    display: inline-block;
+    padding: 12px 28px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    transition: background-color var(--transition-speed), transform 0.2s ease;
+    text-align: center;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+}
+
+.primary-btn {
+    background-color: var(--primary-color);
+    color: var(--text-light);
+}
+
+.primary-btn:hover {
+    background-color: #0056b3;
+}
+
+.secondary-btn {
+    background-color: var(--secondary-color);
+    color: var(--text-light);
+}
+
+.secondary-btn:hover {
+    background-color: #5a6268;
+}
+
+/* ==================== 3. HEADER (En-tête) ==================== */
+.main-header {
+    background: rgba(0, 0, 0, 0.7); /* Fond semi-transparent pour la clarté */
+    padding: 20px 0;
+    position: sticky; /* Rendre le header sticky */
+    top: 0;
+    z-index: 1000; /* Assurer qu'il reste au-dessus des autres contenus */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.main-header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+}
+
+.main-header .logo {
+    color: var(--text-light);
+    font-size: 2.2em;
+    font-weight: 700;
+    letter-spacing: 1px;
+    
+}
+
+.main-nav .nav-list {
+    display: flex;
+    gap: 30px; /* Espacement entre les éléments du menu */
+}
+
+.main-nav .nav-list li a {
+    color: var(--text-light);
+    font-weight: 500;
+    padding: 5px 0;
+    position: relative;
+    transition: color var(--transition-speed);
+}
+
+.main-nav .nav-list li a:hover {
+    color: var(--primary-color);
+}
+
+/* Soulignement au survol */
+.main-nav .nav-list li a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    background-color: var(--primary-color);
+    bottom: -5px;
+    left: 50%;
+    transform: translateX(-50%);
+    transition: width var(--transition-speed);
+}
+
+.main-nav .nav-list li a:hover::after {
+    width: 100%;
+}
+
+/* Style spécifique pour le bouton Contact dans le menu */
+.main-nav .nav-list li .btn-contact-modal {
+    padding: 8px 18px;
+    font-size: 0.95em;
+    background-color: var(--accent-color);
+    border-radius: 20px; /* Bouton pill */
+}
+
+.main-nav .nav-list li .btn-contact-modal:hover {
+    background-color: #218838;
+    color: var(--text-light); /* S'assurer que le texte reste blanc au survol */
+}
+
+
+/* Menu Burger (caché par défaut sur desktop) */
+.burger-menu {
+    display: none; /* Caché sur desktop */
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 30px;
+    height: 25px;
+    z-index: 1001; /* Au-dessus du reste */
+}
+
+.burger-menu span {
+    display: block;
+    width: 100%;
+    height: 3px;
+    background-color: var(--text-light);
+    border-radius: 5px;
+    transition: all var(--transition-speed);
+}
+
+/* Animation du burger en croix */
+.burger-menu.active span:nth-child(1) {
+    transform: translateY(11px) rotate(45deg);
+}
+
+.burger-menu.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.burger-menu.active span:nth-child(3) {
+    transform: translateY(-11px) rotate(-45deg);
+}
+
+
+/* ==================== 4. SECTION HERO (ACCUEIL) ==================== */
+.hero {
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('../workly_site/images/64db6b9662d263b3df79af14_IMG_1061-min-min.jpg') no-repeat center center/cover;
+    color: var(--text-light);
+    min-height: 80vh; /* Prend au moins 80% de la hauteur de la fenêtre */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 80px 0;
+}
+
+.hero h2 {
+    font-size: 4em;
+    margin-bottom: 20px;
+    max-width: 900px;
+    color: var(--text-light);
+}
+
+.hero p {
+    font-size: 1.4em;
+    margin-bottom: 40px;
+    max-width: 800px;
+    color: var(--text-light);
+}
+
+/* ==================== 5. SECTIONS GÉNÉRALES ==================== */
+section {
+    padding: 100px 0; /* Espacement conséquent entre les sections */
+    text-align: center;
+}
+
+section:nth-of-type(even) { /* Pour alterner les couleurs de fond (si besoin) */
+    background-color: var(--bg-light);
+}
+
+/* ==================== 6. SECTION NOS ESPACES (CARROUSEL) ==================== */
+.spaces {
+    background-color: var(--text-light);
+}
+
+.carousel-container {
+    position: relative;
+    max-width: 900px; /* Taille maximale du carrousel */
+    margin: 0 auto;
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: var(--box-shadow);
+}
+
+.carousel-track {
+    display: flex;
+    transition: transform var(--transition-speed);
+}
+
+.carousel-slide {
+    min-width: 100%; /* Chaque slide prend 100% de la largeur du conteneur */
+    box-sizing: border-box;
+    position: relative;
+    padding-bottom: 40px; /* Espace pour les dots */
+}
+
+.carousel-slide img {
+    width: 100%;
+    height: 450px; /* Hauteur fixe pour toutes les images du carrousel */
+    object-fit: cover;
+    display: block;
+    border-radius: 10px 10px 0 0;
+}
+
+.slide-content {
+    position: absolute;
+    bottom: 0; /* Positionné en bas de l'image */
+    left: 0;
+    right: 0;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent); /* Dégradé pour la lisibilité */
+    color: var(--text-light);
+    padding: 20px;
+    text-align: center;
+    border-radius: 0 0 10px 10px;
+}
+
+.slide-content h4 {
+    color: var(--text-light);
+    margin-bottom: 5px;
+    font-size: 1.6em;
+}
+
+.slide-content p {
+    font-size: 1em;
+    opacity: 0.9;
+}
+
+.carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: var(--text-light);
+    border: none;
+    padding: 15px 10px;
+    cursor: pointer;
+    font-size: 2em;
+    border-radius: 5px;
+    transition: background-color var(--transition-speed);
+}
+
+.carousel-btn:hover {
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+.prev-btn {
+    left: 15px;
+}
+
+.next-btn {
+    right: 15px;
+}
+
+.carousel-dots {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 10px;
+    z-index: 10;
+}
+
+.dot {
+    width: 12px;
+    height: 12px;
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color var(--transition-speed), transform 0.2s ease;
+}
+
+.dot.active {
+    background-color: var(--primary-color);
+    transform: scale(1.2);
+}
+
+
+/* ==================== 7. SECTION NOS OFFRES / TARIFS ==================== */
+.pricing {
+    background-color: var(--bg-light);
+}
+
+.pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    justify-items: center; /* Centre les cartes dans la grille */
+    align-items: start; /* Aligne les cartes en haut */
+    max-width: 1000px; /* Limite la largeur de la grille */
+    margin: 0 auto;
+}
+
+.pricing-card {
+    background-color: var(--text-light);
+    padding: 35px;
+    border-radius: 10px;
+    box-shadow: var(--box-shadow);
+    text-align: center;
+    border: 1px solid var(--border-color);
+    transition: transform var(--transition-speed), box-shadow var(--transition-speed);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Pousser le bouton en bas */
+    width: 100%; /* S'assurer qu'elle prend toute la largeur dans la colonne */
+}
+
+.pricing-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+}
+
+.pricing-card.featured-card {
+    background-color: var(--primary-color); 
+    color: var(--text-light);
+    transform: scale(1.05); /* Plus grande pour la mise en avant */
+    border-color: var(--primary-color);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.25);
+    z-index: 1; /* Pour qu'elle apparaisse au-dessus */
+}
+
+.pricing-card.featured-card h4,
+.pricing-card.featured-card .price,
+.pricing-card.featured-card li {
+    color: var(--text-light);
+}
+.pricing-card.featured-card .price span {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.pricing-card h4 {
+    font-size: 2em;
+    margin-bottom: 15px;
+    color: var(--primary-color);
+}
+
+.pricing-card .price {
+    font-size: 3.5em;
+    font-weight: bold;
+    color: var(--primary-color);
+    margin-bottom: 25px;
+}
+
+.pricing-card .price span {
+    font-size: 0.5em;
+    font-weight: normal;
+    color: var(--secondary-color);
+}
+
+.pricing-card ul {
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.pricing-card ul li {
+    padding: 10px 0;
+    border-bottom: 1px dashed var(--border-color);
+    color: var(--text-dark);
+}
+.pricing-card.featured-card ul li {
+    border-color: rgba(255, 255, 255, 0.3);
+    color: var(--text-light);
+}
+
+.pricing-card ul li:last-child {
+    border-bottom: none;
+}
+
+.pricing-card .btn {
+    width: 80%; /* Bouton plus large */
+    margin: 0 auto; /* Centrer le bouton */
+    padding: 12px 20px;
+    font-size: 1em;
+}
+
+.pricing-card.featured-card .btn {
+    background-color: var(--text-light);
+    color: var(--primary-color);
+}
+.pricing-card.featured-card .btn:hover {
+    background-color: rgba(255, 255, 255, 0.9);
+    color: var(--primary-color);
+}
+
+
+/* ==================== 8. MODALE DE CONTACT ==================== */
+.modal {
+    display: none; /* Cachée par défaut */
+    position: fixed; /* Reste en place même au défilement */
+    z-index: 2000; /* Au-dessus de tout le reste */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto; /* Permet le défilement si le contenu est trop grand */
+    background-color: rgba(0, 0, 0, 0.7); /* Fond noir semi-transparent */
+    display: flex; /* Centrer la modale */
+    align-items: center; /* Centrer verticalement */
+    justify-content: center; /* Centrer horizontalement */
+    opacity: 0; /* Pour l'animation d'apparition */
+    visibility: hidden; /* Pour l'animation d'apparition */
+    transition: opacity var(--transition-speed), visibility var(--transition-speed);
+}
+
+.modal.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal-content {
+    background-color: var(--text-light);
+    margin: auto; /* Pour centrer si flexbox n'était pas utilisé */
+    padding: 30px 40px;
+    border-radius: 10px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+    position: relative;
+    max-width: 600px;
+    width: 90%; /* Prend 90% de la largeur disponible, jusqu'à 600px */
+    transform: translateY(-50px); /* Pour l'animation d'apparition */
+    transition: transform var(--transition-speed) ease-out;
+}
+
+.modal.show .modal-content {
+    transform: translateY(0);
+}
+
+.close-button {
+    color: var(--secondary-color);
+    font-size: 2.5em;
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    cursor: pointer;
+    transition: color var(--transition-speed);
+}
+
+.close-button:hover,
+.close-button:focus {
+    color: var(--text-dark);
+    text-decoration: none;
+}
+
+.modal-content h3 {
+    margin-bottom: 10px;
+    color: var(--primary-color);
+}
+
+.modal-content p {
+    margin-bottom: 25px;
+    color: var(--secondary-color);
+}
+
+.contact-form .form-group {
+    margin-bottom: 18px;
+    text-align: left; /* Alignement du texte des labels */
+}
+
+.contact-form label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: var(--text-dark);
+    font-size: 0.95em;
+}
+
+.contact-form input[type="text"],
+.contact-form input[type="email"],
+.contact-form select,
+.contact-form textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    font-size: 1em;
+    background-color: var(--bg-light);
+    color: var(--text-dark);
+}
+
+.contact-form input::placeholder,
+.contact-form textarea::placeholder {
+    color: #aab8c2; /* Couleur plus claire pour le placeholder */
+}
+
+.contact-form select {
+    appearance: none;
+    background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http://www.w3.org/2000/svg%22%20viewBox%3D%220%200%204%205%22%3E%3Cpath%20fill%3D%22%23343a40%22%20d%3D%22M2%200L0%202h4zm0%205L0%203h4z%22/%3E%3C/svg%3E');
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    background-size: 10px;
+}
+
+.contact-form textarea {
+    resize: vertical; /* Permet de redimensionner verticalement */
+    min-height: 100px;
+}
+
+.contact-form .btn {
+    width: 100%; /* Le bouton de soumission prend toute la largeur */
+    margin-top: 20px;
+}
+
+/* ==================== 9. FOOTER (Pied de page) ==================== */
+.main-footer {
+    background-color: var(--text-dark);
+    color: var(--text-light);
+    padding: 60px 0 20px;
+    font-size: 0.95em;
+}
+
+.main-footer .container {
+    display: flex;
+    flex-wrap: wrap; /* Permet aux colonnes de passer à la ligne sur mobile */
+    justify-content: space-between;
+    gap: 30px; /* Espace entre les colonnes du footer */
+    text-align: left; /* Alignement par défaut des textes du footer */
+}
+
+.footer-info, .footer-nav, .footer-social {
+    flex: 1; /* Prend l'espace disponible */
+    min-width: 250px; /* Largeur minimale avant de passer à la ligne */
+}
+
+.main-footer h4 {
+    color: var(--primary-color);
+    margin-bottom: 20px;
+    font-size: 1.2em;
+    text-align: left; /* Aligner les titres du footer à gauche */
+}
+
+.main-footer p {
+    margin-bottom: 10px;
+    color: rgba(255, 255, 255, 0.8);
+    text-align: left; /* Aligner les paragraphes du footer à gauche */
+}
+
+.main-footer ul {
+    list-style: none;
+    padding: 0;
+}
+
+.main-footer ul li {
+    margin-bottom: 10px;
+}
+
+.main-footer ul li a {
+    color: rgba(255, 255, 255, 0.8);
+    transition: color var(--transition-speed);
+}
+
+.main-footer ul li a:hover {
+    color: var(--primary-color);
+}
+
+.footer-social ul {
+    display: flex;
+    gap: 15px;
+    text-align: left;
+}
+
+.footer-social img {
+    width: 30px;
+    height: 30px;
+    transition: filter var(--transition-speed);
+}
+
+.footer-social a:hover img {
+    filter: brightness(0.5) ;
+}
+
+.footer-bottom {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 20px;
+    margin-top: 40px;
+    text-align: center;
+}
+
+.footer-bottom .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap; /* Pour la réactivité */
+}
+
+.footer-bottom p, .footer-bottom a {
+    color: rgba(255, 255, 255, 0.7);
+    text-align: center;
+}
+
+.footer-bottom a:hover {
+    color: var(--primary-color);
+}
+
+/* ==================== 10. Animations au Scroll (Placeholder) ==================== */
+/* Ces classes seront ajoutées par JavaScript pour animer les éléments */
+.fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.fade-in.appear {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ==================== 11. Responsive Design ==================== */
+@media (max-width: 992px) {
+    h1 { font-size: 3em; }
+    h2 { font-size: 2.5em; }
+    h3 { font-size: 2em; }
+    h4 { font-size: 1.5em; }
+
+    .hero h2 {
+        font-size: 3.2em;
+    }
+    .hero p {
+        font-size: 1.2em;
+    }
+
+    .main-nav .nav-list {
+        gap: 20px;
+    }
+
+    .carousel-slide img {
+        height: 380px;
+    }
+
+    .pricing-grid {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Ajuste la largeur min des cartes */
+        gap: 25px;
+    }
+
+    .pricing-card.featured-card {
+        transform: scale(1); /* Réinitialise le scale sur les écrans plus petits */
+    }
+}
+
+@media (max-width: 768px) {
+    .main-header .container {
+        flex-wrap: wrap; /* Permet au logo et à la nav de passer à la ligne */
+        justify-content: center;
+    }
+    .main-header .logo {
+        width: 100%;
+        text-align: center;
+        margin-bottom: 20px;
+    }
+    
+    .main-nav .nav-list {
+        display: none; /* Cache le menu par défaut */
+        flex-direction: column;
+        width: 100%;
+        background-color: rgba(0, 0, 0, 0.9); /* Fond du menu ouvert */
+        position: absolute;
+        top: 85px; /* Sous le header */
+        left: 0;
+        padding: 20px 0;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+    .main-nav .nav-list.active {
+        display: flex; /* Affiche le menu quand il est actif */
+    }
+
+    .main-nav .nav-list li {
+        margin: 10px 0;
+        text-align: center;
+    }
+
+    .burger-menu {
+        display: flex; /* Affiche le burger menu */
+        position: absolute; /* Positionne le burger en haut à droite */
+        right: 25px;
+        top: 30px;
+    }
+
+    .hero h2 {
+        font-size: 2.5em;
+    }
+    .hero p {
+        font-size: 1.1em;
+    }
+
+    .carousel-slide img {
+        height: 300px;
+    }
+    .slide-content h4 {
+        font-size: 1.4em;
+    }
+    .slide-content p {
+        font-size: 0.9em;
+    }
+
+    .carousel-btn {
+        padding: 10px 5px;
+        font-size: 1.5em;
+    }
+
+    .pricing-grid {
+        grid-template-columns: 1fr; /* Une seule colonne sur mobile */
+        max-width: 400px; /* Limite la largeur des cartes individuelles */
+    }
+
+    .pricing-card.featured-card {
+        transform: scale(1); /* Assure qu'elle n'est pas plus grande */
+    }
+
+    .main-footer .container {
+        flex-direction: column; /* Les colonnes du footer s'empilent */
+        text-align: center; /* Centrer le contenu du footer sur mobile */
+    }
+    .footer-info, .footer-nav, .footer-social {
+        min-width: unset;
+        width: 100%;
+        margin-bottom: 20px;
+    }
+    .main-footer h4, .main-footer p, .main-footer ul, .footer-social ul {
+        text-align: center; /* Centrer les titres, paragraphes et listes */
+        justify-content: center; /* Centrer les icônes sociales */
+    }
+
+    .footer-bottom .container {
+        flex-direction: column;
+        gap: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 0 15px;
+    }
+    h1 { font-size: 2.5em; }
+    h2 { font-size: 2em; }
+    h3 { font-size: 1.8em; }
+    .hero h2 {
+        font-size: 2em;
+    }
+    .hero p {
+        font-size: 1em;
+    }
+    .btn {
+        padding: 10px 20px;
+        font-size: 0.9em;
+    }
+    .carousel-slide img {
+        height: 250px;
+    }
+    .slide-content {
+        padding: 15px;
+    }
+    .slide-content h4 {
+        font-size: 1.2em;
+    }
+    .carousel-btn {
+        padding: 8px 4px;
+        font-size: 1.2em;
+    }
+    .modal-content {
+        padding: 20px 25px;
+    }
+    .close-button {
+        font-size: 2em;
+        right: 15px;
+    }
+}
